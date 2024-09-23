@@ -37,12 +37,12 @@ jobs:
 
       - name: Create new Git tag and push
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          sdtmrTOKEN: ${{ secrets.sdtmrTOKEN }}
         run: |
           new_version=${{ steps.get_tag.outputs.version }}
           echo "Creating new tag: $new_version"
           git tag $new_version
-          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }} $new_version
+          git push https://x-access-token:${sdtmrTOKEN}@github.com/${{ github.repository }} $new_version
 
       - name: Create GitHub Release
         uses: actions/create-release@v1

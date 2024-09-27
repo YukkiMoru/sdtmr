@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/netherite_pickaxe"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 200
+      },
+      "model": "template:item/fake_wooden_pickaxe"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 201
+      },
+      "model": "template:item/fake_stone_pickaxe"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 202
+      },
+      "model": "template:item/fake_iron_pickaxe"
+    }
+  ]
+}

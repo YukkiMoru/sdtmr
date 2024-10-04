@@ -11,6 +11,9 @@ jobs:
     steps:
     - name: リポジトリの内容をチェックアウト
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+
 
     - name: バージョン番号をインクリメント
       run: |

@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: リポジトリの内容をチェックアウト
+      uses: actions/checkout@v2
+
+    - name: バージョン番号をインクリメント
+      run: |
+        chmod +x .github/increment_version.sh
+        new_tag=$(./github/increment_version.sh)
+        echo "new_tag=$new_tag" >> $GITHUB_ENV
+
+    - name: ZIP ファイルを作成
+      run: |
+        chmod +x .github/create_zip.sh
+        ./.github/create_zip.sh
+
+    - name: GitHub リリースを作成
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ env.new_tag }}
+        release_name: リリース ${{ env.new_tag }}
+        body: |
+          ## 変更点
+          - 変更内容の説明
+        draft: false
+        prerelease: false
+
+    - name: リリースアセットをアップロード
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: sdtmr.zip
+        asset_name: sdtmr.zip
+        asset_content_type: application/zip

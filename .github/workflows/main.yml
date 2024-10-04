@@ -12,7 +12,7 @@ jobs:
     - name: リポジトリの内容をチェックアウト
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
 
 
     - name: バージョン番号をインクリメント

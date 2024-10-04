@@ -15,7 +15,7 @@ jobs:
     - name: バージョン番号をインクリメント
       run: |
         chmod +x .github/increment_version.sh
-        new_tag=$(./github/increment_version.sh)
+        new_tag=$(./.github/increment_version.sh)
         echo "new_tag=$new_tag" >> $GITHUB_ENV
 
     - name: ZIP ファイルを作成

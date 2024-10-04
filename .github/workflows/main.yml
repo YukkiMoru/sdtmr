@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: リポジトリの内容をチェックアウト
-      uses: actions/checkout@v
+      uses: actions/checkout@v2
       with:
         token: ${{ secrets.MY_GITHUB_ACCESS_TOKEN }}
 
